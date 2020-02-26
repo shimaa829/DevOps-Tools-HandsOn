@@ -1,0 +1,24 @@
+
+- Docker attach , execute on a running container
+
+- to access the terminal of a container
+
+     $ docker container attach my-busybox
+
+- Docker execute command allows us to use any command we want and it executes the container:
+
+     $ docker container start  my-busybox 
+
+     $ docker exec -it my-busybox pwd
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+- Port Mapping on containers :
+
+    $ docker container run -itd --name cont_nginx -p 8080:80/tcp img_expose
+
+Note : we can use another option [-P] it allow docker to map ports by itself =>
+
+    $ docker container run -itd --name cont_nginx-A -P  img_expose

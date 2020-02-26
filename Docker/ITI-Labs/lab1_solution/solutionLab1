@@ -1,0 +1,131 @@
+problem 1 :
+
+	    -Run the container hello-world :
+
+		 $ docker pull hello-world
+
+		 $ docker run  hello-world
+	       
+	    -Check the container status :
+		 
+		 $ docker ps -a
+	   
+	    -Stop the started container :
+
+		 $ docker stop  b023c8cd6e5b 
+	    
+	    -Remove the container :
+		 
+		 $ docker container rm b023c8cd6e5b
+		 
+
+	    -Remove the image :
+
+		 $ docker image ls
+		  
+		 $ docker image rm fce289e99eb9 
+
+        
+                      ********************************
+
+
+problem 2 :
+
+		-Run container centos or ubuntu in an interactive mode :
+		 
+		  $ docker pull ubuntu
+
+		  $ docker run  --name ubuntu -it ubuntu
+
+		-Run the following command in the container “echo docker ” :
+
+		  $ echo docker
+		  
+		-Open a bash shell in the container and touch a file named hello-docker :
+
+		  $ docker exec -it ubuntu bash
+
+		  $ touch hello-docker
+		 
+		  $ exit
+
+
+		-Stop the container and remove it. Write your comment about the file hello-docker :
+
+		   
+		   $ docker stop  ubuntu
+		   $ docker container rm ubuntu
+
+		-Remove all stopped containers :
+
+		   $ docker rm $(docker ps -a -q)
+
+        ************************************
+
+problem 3 :
+
+	-Run a container httpd with name apache and attach a volume 2 volumes to the container:
+	 1-Volume1 for containing static html file
+	 2-Volume2 for containing httpd configuration
+
+
+	    $ docker pull httpd
+	 
+	    $ docker volume create --name volume1
+
+	    $ docker volume create --name volume2
+
+
+	    $ docker container run -d --name apache1 -v volume1:/var/www/ httpd
+
+	    $ docker container run -d --name apache2 -v volume2:/etc/httpd/ httpd
+
+	-Remove the container :
+
+	 $ docker container rm apache1
+
+	 $ docker container rm apache2
+
+
+	-Run a new container with the following:
+
+	  1-Map port 80 to port 9898 on you host machine
+	  2-Access the html files from your browser
+
+
+	     $ docker run --name apache3 -p 9898:80 httpd:latest
+	     $ docker start apache3
+
+
+              *****************************
+
+
+problem 4 :
+ 
+	-Run the image httpd again without attaching any volumes :
+	 
+	  $ docker run --name my-app -id httpd:latest
+
+	-Add html static files to the container and make sure they are  accessible :
+
+	  $ docker cp /home/shimaa/Desktop/Docker_course/Day_1/staticHtml/index.html my-app:/usr/local/apache2/
+
+	-Commit the container with image name IMAGE_NAME
+	 
+	   $ docker commit my-app  "mynewapp"
+
+	-Create a dockerfile for the previous image and build the image from this dockerfile :
+
+	  first create the Dockerfile
+	  then go to terminal =>
+	  
+	     $ docker build -t mybuildimg .
+
+              ********************************
+
+
+
+
+
+
+

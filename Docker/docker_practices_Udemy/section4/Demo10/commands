@@ -1,0 +1,22 @@
+                            
+         Running Wordpress-MySQL using Docker Compose
+                        ********
+        
+- Builds,starts, and attaches to containers for mysql and wordpress services.
+   
+   $ docker-compose up -d
+
+Note: GO to Browser and write in search => localhost:8000 
+      to test the access of wordpress service
+
+- View the com yaml file on the terminal screen 
+
+   $ docker-compose config 
+
+- Extract specific information from the YAML file like services:
+
+   $ docker-compose config --services
+
+- List out all the images used to create containers for services:
+  
+    $ docker-compose images 

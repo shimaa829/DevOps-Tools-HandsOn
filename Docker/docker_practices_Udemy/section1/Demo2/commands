@@ -1,0 +1,28 @@
+
+  build image: 
+
+    - docker build -t img_run-env .
+  
+  run a container from the image:
+  
+    - docker run -itd --name cont_run-env img_run-env
+ 
+  execute the container bash command:
+
+   -  docker exec -it cont_run-env bash
+
+ after that the shell of container is running interactively:
+  
+        root@d0b143d26dc0:/# echo $USER
+	   Cerulean-Canvas
+	root@d0b143d26dc0:/# echo $SHELL
+	   /bin/bash
+	root@d0b143d26dc0:/# echo $LOGNAME
+	   Cerulean-Canvas
+	root@d0b143d26dc0:/# cd /home/
+	root@d0b143d26dc0:/home# ls
+	   Codes
+	root@d0b143d26dc0:/home# exit
+	   exit
+ 
+

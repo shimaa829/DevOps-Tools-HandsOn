@@ -1,0 +1,14 @@
+FROM node:apline
+RUN mkdir /node/weather-app
+RUN mkdir src
+RUN cd src
+WORKDIR src
+RUN touch index.html
+ADD . /node/weather-app
+WORKDIR /node/weather-app
+CMD ["npm", "start"]
+ARG APP_VERSION
+ENV NODE_ENV
+COPY . /var/weather-app
+EXPOSE 3000
+ENTRYPOINT ./bin/www

@@ -1,0 +1,26 @@
+- Docker image | inspect and history
+
+    $ docker search python:3.6
+        
+    $ docker image pull nginx:alpine
+
+    $ docker images nginx
+
+    $ docker image inspect ubuntu:latest 
+
+    $ docker image inspect --format "{{.RepoTags}}:{{.RepoDigests}}"  ubuntu:latest 
+
+
+- To save the result of inspect information in a file in our cuurnt directory:
+
+     to store the configuration details about imag in text file
+
+    $ docker inspect --format='{{json .Config}}' ubuntu:latest > inspect_report_ubuntu.text
+
+- history of image layers:
+
+    $ docker image history ubuntu:latest
+
+- remove images :
+ 
+    $ docker rm nginx:1.10.0-alpine

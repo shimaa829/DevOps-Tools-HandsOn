@@ -1,0 +1,50 @@
+                                    Docker Swarm
+                                ---------------------
+
+- install docker-machine tool :
+   
+    $ base=https://github.com/docker/machine/releases/download/v0.14.0 && 
+      curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine && 
+      sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+
+- Using virtualbox as the driver and create my node manager :
+   
+    $ docker-machine create --driver virtualbox manager
+
+- create two nodes worker1 && worker2 :
+
+
+- stop manager node :
+ 
+     $ docker-machine stop manager
+
+- start manager node again :
+  
+     $ docker-machine start manager
+    
+- display the ip of manager node :
+    
+      $ docker-machine ip manager
+
+- display all information about manager node :
+  
+     $ docker-machine inspect manager
+
+- To navigate to the shell of manager node :
+   
+     $ docker-machine ssh manager
+
+- make the manager node a "manager" of the cluster 
+   we inialize the swarm manager node and inialize its ip address to another nodes:
+
+     docker@manager:~$ docker swarm init --advertise-addr 192.168.99.100 
+   
+- add workers to this manager node :
+
+    $ docker-machine ssh worker-1
+    docker@worker-1:~$ docker swarm join   --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c   192.168.99.100:2377
+
+- to display information about manager node itself :
+  
+    docker@manager:~$ docker node inspect --pretty self 
+          

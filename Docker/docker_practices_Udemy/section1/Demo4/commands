@@ -1,0 +1,8 @@
+
+
+ $ docker build -t img_apache .
+
+ $ docker run -itd --name cont_apache -p 8080:80 img_apache
+ 
+    then go to broswer and check access => localhost:8080
+

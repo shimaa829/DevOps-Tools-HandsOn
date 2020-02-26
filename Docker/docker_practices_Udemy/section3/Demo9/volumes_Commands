@@ -1,0 +1,25 @@
+                   Volumes
+
+- Create volumes :
+
+    $ docker volume create vol-busybox
+    $ docker run -d --volume vol-ubuntu:/temp ubuntu
+
+- List all volumes:
+
+    $ docker volume ls
+
+- List volumes which hasn't been mounted to any container:
+
+    $ docker volume ls --filter "dangling=true"
+
+- Get information or details about a volume :
+   
+    $ docker volume inspect vol-ubuntu 
+
+- Remove vol-ubuntu volume which is used by kind_babbage
+  
+    $ docker container rm kind_babbage
+
+    $ docker volume rm vol-ubuntu 
+

@@ -1,0 +1,19 @@
+                       Services in Swarm
+                    -----------------------
+
+- create a Service on Swarm from nginx and have 3 replicas for it :
+
+    docker@manager:~$ docker service create --name web-server -p 8080:80 --replicas 3 nginx:latest  
+
+- list all Services :
+ 
+    $ docker service ls  
+
+- display all containers inside the service :
+  
+    $ docker service ps web-server 
+
+- scale the service :
+   
+    $ docker service scale web-server=6 
+    

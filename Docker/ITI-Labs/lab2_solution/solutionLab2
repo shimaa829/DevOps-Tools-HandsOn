@@ -1,0 +1,107 @@
+Problem 1 :
+
+	- Create bridge network with subnet 192.168.0.0/24 :
+
+	   $ docker network create -d my-bridge-network --subnet=192.168.0.0/24
+
+	-----------------------------------------------------------------------
+
+	- Run 2 containers and attach containers to this network :
+
+	   $ docker run --name firstContainer ubuntu 
+	   $ docker run --name secondContainer  ubuntu 
+
+	   $ docker network connect my-bridge-network firstContainer 
+	   $ docker network connect my-bridge-network secondContainer 
+		
+	-----------------------------------------------------------------------
+
+	- Create another bridge network with subnet 10.5.0.0/24 :
+
+	   $ docker network create -d my-bridge-network2 --subnet=10.5.0.0/24
+
+
+	------------------------------------------------------------------------
+
+	-Run any container and attach it to the new network :
+	   
+	    $ docker container run -it --name thirdContainer --network my-bridge-      network2 ubuntu
+
+	    $ docker attach firstContainer 
+
+	-------------------------------------------------------------------------
+
+	-Make sure that the containers at different network can’t ping each other :
+
+	    $ docker inspect 05c8116966e7  // this this diplay is the ip of ThirdContainer
+	  
+	    $ ping 10.5.0.2
+
+               ********************************
+
+
+Problem 2 :
+
+
+	-Create static html file
+	- Write Dockerfile to build image based on httpd to host the html file and
+	specify the following:
+
+		1-Copy the html file.
+		2-Copy a new configuration file to listen on port 9999 instead of 80
+		3-Open the port 9999 in the container
+		4-Add environment variable CONTAINER with value docker .
+		5-Add startup command to echo the variable
+
+	  $ docker build -t myhttpdimg /home/shimaa/Desktop/Docker_course/Day_2/lab2_solution/
+	  
+	  $ docker run -it --name mypage  myhttpdimg 
+
+
+             **************************************
+ 
+ 
+Problem 3:
+
+	-Create a docker compose to up mysql container, any web container and
+	web server ( nginx ) depend on mysqldb.
+
+	-Add volume for mysqldb
+
+	  I created a docker-compose files in yamlDir directory
+
+
+
+           *********************************************
+
+
+Problem 4:
+
+	-Create a Dockerfile to deploy weather-app application:
+
+		1-You will use node:alpine as the base image.
+		2-create a directory for the source code: /node/weather-app.
+		3-Add the code from src to /node/weather-app on the image.
+		4-Set /node/weather-app as the working directory.
+		5-Execute an npm install to install the dependencies.
+		6-Create an argument called APP_VERSION that will set the version of the
+		application.
+		7- Set an environment variable called NODE_ENV and set it to production.
+		8-Copy /node/weather-app from the source build stage to /var/weather-app.
+		9-Set /var/weather-app as the working directory.
+		10-Expose port 3000.
+		11-Set ./bin/www as the entrypoint.
+		12- Build the image.
+
+
+             ************************************************
+
+Problem 5:
+
+	 -Use docker compose to deploy ghost platform (image: ghost:1-
+	alpine)(Ghost is a free and open source blogging platform written in
+	JavaScript)
+	 -Use mysql database instead of sqlite
+
+
+	    I created a docker-compose files in yamlDir directory

@@ -1,0 +1,21 @@
+- Docker Contaioner create VS run
+  
+   $ docker container create -it --name cc-busybox-A busybox:latest
+ 
+Note: the container is cretaed but it is not in running state
+
+    $ docker container run -itd --rm --name cc-busybox-B busybox:latest
+
+Note:the container is cretaed and it is in running state
+
+
+
+----------------------------------------------------------------------------
+
+- Contaioner start , stop and rename :
+
+    $ docker container start cc-busybox-A
+
+    $ docker container stop cc-busybox-B
+
+    $ docker container rename cc-busybox-A my-busybox

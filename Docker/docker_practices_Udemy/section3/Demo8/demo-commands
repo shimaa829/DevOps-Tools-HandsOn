@@ -1,0 +1,21 @@
+
+- Docker network
+
+     $ docker network create --driver bridge my-bridge
+
+ - to list all networks that are created with bridge network driver:
+
+     $ docker network ls --filter driver=bridge 
+ 
+ -----------------------------------------------------------------------------
+
+ - connect container to network:
+
+     $ docker network connect  my-bridge-network cont_apache
+
+- attach container to network during running command
+
+     $ docker container run -itd --network host cont_nginx nginx:latest
+     
+     $ docker container port cont_nginx
+
