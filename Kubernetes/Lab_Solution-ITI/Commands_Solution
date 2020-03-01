@@ -1,0 +1,36 @@
+1- 
+
+   kubectl create namespace dev
+   kubectl create namespace test
+
+-----------------------------------------------------------
+
+2-
+ 
+  kubectl apply -f quota.yml --namespace=dev
+------------------------------------------------------------
+3-
+  
+   kubectl apply -f nginx.yml --namespace=dev
+
+-----------------------------------------------------------
+
+4-
+
+   kubectl apply -f redis.yml --namespace=dev  
+
+------------------------------------------------------------
+5-
+   kubectl get svc -n dev
+   minikube ip
+   
+   goto browser:
+   ip:notport in search field
+
+
+  
+  
+
+ 
+
+ 

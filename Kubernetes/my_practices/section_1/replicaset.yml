@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: first-replicaset
+spec:
+  template:
+     metadata:
+       name: second-pod
+       labels:
+         app: myapp
+         type: front-end
+     spec:
+       containers:
+       - name: hello-page
+         image: shimaa96/myhellopage:1.2
+  # replicas: 6
+  selector:
+       matchLabels:
+            app: myapp
+            type: front-end

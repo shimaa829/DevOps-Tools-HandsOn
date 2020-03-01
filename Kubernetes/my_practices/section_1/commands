@@ -1,0 +1,63 @@
+
+
+								deployment
+							       *************
+
+
+
+- create deployment :
+
+   $ kubectl create --filename=deployment.yml --record=true
+
+- List all deployments:
+
+    $ kubectl get deployments
+
+- display the details about deployment information :
+
+   $ kubectl describe deployments first-deploy
+
+- List all replicas :
+  
+   $ kubectl get rs
+
+- List all pods :
+   
+   $ kubectl get pods
+
+- display informations about all pods with ip add of each one : 
+
+    $ kubectl get pods -o wide
+
+- delete deployment :
+
+   $ kubectl delete deployments first-deploy
+
+- forwarding to port 3000 :
+
+   $ kubectl port-forward deployments/first-deploy 3000
+ 
+- after updating in the s/w we apply the changes on deployment file :
+
+   $ kubectl apply --filename=deployment.yml --record=true 
+
+- deployment.apps/first-deploy rolled back
+
+   $ kubectl rollout undo deployment/first-deploy --to-revision 1
+
+----------------------------------------------------------------
+
+
+
+
+                      namespaces
+
+ kubectl get pods --namespace default
+
+ kubectl create namespace test
+
+kubectl create -f yamlfile.yml -n namespace-name
+
+
+
+

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-api
+  labels:
+    app: myapp
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      name: order-api-pod
+      labels:
+        app: myapp
+        type: rest-api
+    spec:
+      containers:
+      - name: backend-api
+        image: kavisuresh/employee
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8888

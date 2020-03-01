@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+       app: myapp
+       type: front-end
+spec:
+  containers:
+   - name: hello-page
+     image: shimaa96/myhellopage:1.2
+     resources:
+        limits:
+           memory: "128Mi"
+           cpu: "500m"
+
