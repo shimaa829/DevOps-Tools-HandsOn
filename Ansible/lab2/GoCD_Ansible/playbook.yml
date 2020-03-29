@@ -1,0 +1,36 @@
+---
+- hosts: gocd
+  remote_user: ec2-user
+  become: true
+  tasks:
+  - name: Download GOCD tool repo
+    get_url:
+      url: https://download.gocd.org/gocd.repo
+      dest: /etc/yum.repos.d/gocd.repo
+  - name: ensure installing go-server
+    yum:
+      name: go-server
+      state: latest
+
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name: go-server
+  
+      
+  - name: Download GOCD tool repo
+    get_url:
+      url: https://download.gocd.org/gocd.repo
+      dest:  /etc/yum.repos.d/gocd.repo
+  - name: ensure installing go-agent
+    yum:
+      name: go-agent
+      state: latest
+      
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name: go-agent
+
+
+  
